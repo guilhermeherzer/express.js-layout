@@ -10,7 +10,7 @@ app.set('views', path.join(__dirname, './../app/views'))
 const router = express.Router()
 
 app.use(router)
-app.use(express.static(path.join(__dirname, './app/public')))
+app.use(express.static(path.join(__dirname, './../app/public')))
 app.use(express.urlencoded({ extended: true }))
 
 consign()
