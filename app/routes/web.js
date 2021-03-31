@@ -1,6 +1,9 @@
 const loginController = require("../controllers/login");
+const registerController = require("../controllers/register");
 
 module.exports = router => {
-    router.get("/",         loginController.index);
-    router.post("/login",    loginController.login);
+    router.get('/login', loginController.index)
+
+    router.get('/register', registerController.index)
+    router.post('/register', registerController.create)
 }
