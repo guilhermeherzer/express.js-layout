@@ -21,6 +21,12 @@ class Login {
         })
         .catch(next);
     }
+    
+    logout = (req, res, next) => {
+        req.session.destroy(function(){
+            res.redirect('/');
+        });
+    }
 }
 
 module.exports = new Login()

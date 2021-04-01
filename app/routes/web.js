@@ -1,6 +1,6 @@
 const ctrl = require("../controllers")
 
-function restrict(req, res, next) {
+function auth(req, res, next) {
     if (req.session.user) {
         next();
     } else {
@@ -9,12 +9,21 @@ function restrict(req, res, next) {
     }
 }
 
+function guest(req, res, next) {
+    if (req.session.user) {
+        res.redirect('/');
+    } else {
+        next();
+    }
+}
+
 module.exports = router => {
-    router.get('/login', ctrl.login.index)
+    router.get('/login', guest, ctrl.login.index)
     router.post('/login', ctrl.login.authenticate)
+    router.get('/logout', ctrl.login.logout)
     
-    router.get('/register', ctrl.register.index)
+    router.get('/register', guest, ctrl.register.index)
     router.post('/register', ctrl.register.create)
     
-    router.get('/', restrict, ctrl.home.index)
+    router.get('/', auth, ctrl.home.index)
 }
