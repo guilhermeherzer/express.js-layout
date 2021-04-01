@@ -2,7 +2,7 @@ const userService = require('./../services/user')
 
 class Login {
     index = (req, res, next) => {
-        res.render('login')
+        res.render('login', { layout: 'login' })
     }
     
     authenticate = (req, res, next) => {

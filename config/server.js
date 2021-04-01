@@ -7,6 +7,7 @@ var consign = require('consign')
 var app = express()
 
 app.set('view engine', 'ejs')
+app.set('layout', path.join(__dirname, './../app/views/layouts/layout'))
 app.set('views', path.join(__dirname, './../app/views'))
 
 const router = express.Router()
@@ -20,7 +21,6 @@ app.use(session({
     saveUninitialized: false, // don't create session until something stored
     secret: 'b14c020f03836cde8d8913c4a908d8f792e48df7e7548ea7bc75114458b8eb63'
 }));
-
 app.use(function(req, res, next){
     var err = req.session.error;
     var msg = req.session.success;

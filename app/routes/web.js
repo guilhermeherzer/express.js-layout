@@ -2,18 +2,18 @@ const ctrl = require("../controllers")
 
 function auth(req, res, next) {
     if (req.session.user) {
-        next();
+        return next();
     } else {
         req.session.error = 'Access denied!';
-        res.redirect('/login');
+        return res.redirect('/login');
     }
 }
 
 function guest(req, res, next) {
     if (req.session.user) {
-        res.redirect('/');
+        return res.redirect('/');
     } else {
-        next();
+        return next();
     }
 }
 
