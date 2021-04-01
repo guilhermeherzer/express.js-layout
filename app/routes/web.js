@@ -20,7 +20,7 @@ function guest(req, res, next) {
 module.exports = router => {
     router.get('/login', guest, ctrl.login.index)
     router.post('/login', ctrl.login.authenticate)
-    router.get('/logout', ctrl.login.logout)
+    router.get('/logout', auth, ctrl.login.logout)
     
     router.get('/register', guest, ctrl.register.index)
     router.post('/register', ctrl.register.create)
